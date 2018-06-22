@@ -20,7 +20,7 @@ def main():
         , PinNumber NVARCHAR(8)
     )'''
     fields = ['DOB', 'SiteID', 'PostCode', 'FirstName', 'LastName', 'Female', 'PinNumber']
-    for length in range(len(fields), 2, -1): # working backwards from most to least combinations
+    for length in range(len(fields), 3, -1): # working backwards from most to least combinations, stopping at 4 matching items
         for combinations in itertools.combinations(fields, length):
             sql += f"\n\nINSERT INTO @resultants ([Duplicate Count], [Matched on], Link1, Link2, ID, DupID, DOB, SiteID, PostCode, FirstName, LastName, Female, PinNumber)\n" \
             + f"SELECT '{len(combinations)}' 'Duplicate Count', "
